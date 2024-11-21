@@ -15,8 +15,8 @@ credentials = Credentials.from_service_account_info(st.secrets["gsheets"], scope
 client = gspread.authorize(credentials)
 
 # Open your Google Sheet
-SHEET_NAME = "https://docs.google.com/spreadsheets/d/1T0LHecKs28qilZZl5ddA5SIp361li7l8-02YCt5jW0U/edit#gid=0"  # Replace with your sheet name
-sheet = client.open("mood_tracking").sheet1  # Access the first worksheet
+SPREADSHEET_ID = "1T0LHecKs28qilZZl5ddA5SIp361li7l8-02YCt5jW0U"
+sheet = client.open_by_key(SPREADSHEET_ID).sheet1  # Access the first worksheet
 
 # Streamlit app UI
 st.title("Mood Tracker")
