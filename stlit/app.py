@@ -7,16 +7,16 @@ from datetime import datetime
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",  # Full access to Google Sheets
     "https://www.googleapis.com/auth/drive.file"    # File-specific access to Drive
-]
-SERVICE_ACCOUNT_FILE = "/Users/ashwinnishad/Downloads/UW/neuropy/neuropy-442419-fabb35ce8ed2.json"  # Replace with your JSON file path 
+]   
+# SERVICE_ACCOUNT_FILE = "/Users/ashwinnishad/Downloads/UW/neuropy/neuropy-442419-fabb35ce8ed2.json"  # Replace with your JSON file path 
 
 # Load credentials from Streamlit secrets
-credentials = Credentials.from_service_account_info(st.secrets["gsheets"])
+credentials = Credentials.from_service_account_info(st.secrets["gsheets"], scopes=SCOPES)
 client = gspread.authorize(credentials)
 
 # Open your Google Sheet
 SHEET_NAME = "https://docs.google.com/spreadsheets/d/1T0LHecKs28qilZZl5ddA5SIp361li7l8-02YCt5jW0U/edit#gid=0"  # Replace with your sheet name
-sheet = client.open_by_key("1T0LHecKs28qilZZl5ddA5SIp361li7l8-02YCt5jW0U").sheet1  # Access the first worksheet
+sheet = client.open("1T0LHecKs28qilZZl5ddA5SIp361li7l8-02YCt5jW0U").sheet1  # Access the first worksheet
 
 # Streamlit app UI
 st.title("Mood Tracker")
