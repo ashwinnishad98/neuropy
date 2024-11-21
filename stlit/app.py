@@ -10,8 +10,8 @@ SCOPES = [
 ]
 SERVICE_ACCOUNT_FILE = "/Users/ashwinnishad/Downloads/UW/neuropy/neuropy-442419-fabb35ce8ed2.json"  # Replace with your JSON file path 
 
-# Authenticate and connect to Google Sheets
-credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+# Load credentials from Streamlit secrets
+credentials = Credentials.from_service_account_info(st.secrets["gsheets"])
 client = gspread.authorize(credentials)
 
 # Open your Google Sheet
